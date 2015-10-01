@@ -12,11 +12,11 @@ application as you see fit. Adopting the protocol is trivial:
 
 ```swift
 extension Apple: SegueableType, Segueable {
-    static let segueTypeNoun = "Apple"
+    class var segueTypeNoun: String { return "Apple" }
 }
 
 extension Banana: SegueableType, Segueable {
-    static let segueTypeNoun = "Banana"
+    class var segueTypeNoun: String { return "Banana" }
 }
 ```
 

@@ -32,10 +32,10 @@
     identifiers without having to compare or duplicate hard-coded strings
     anywhere.
 
-    An types's segueTypeNoun is a name describing its type, like a CoreData
+    A types's segueTypeNoun is a name describing its type, like a CoreData
     entity name. Your model classes can implement this protocol, and you provide
     extensions to the Segueable and SegueableType protocol for use in your
-    application as y ou see fit. Adopting the protocol is trivial:
+    application as you see fit. Adopting the protocol is trivial:
 
     extension Apple: SegueableType, Segueable {
         static let segueTypeNoun = "Apple"

@@ -10,6 +10,7 @@
 		1633602A1BBCDB79003A6B5D /* Apropos.h in Headers */ = {isa = PBXBuildFile; fileRef = 163360291BBCDB79003A6B5D /* Apropos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		163360311BBCDB79003A6B5D /* Apropos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163360261BBCDB79003A6B5D /* Apropos.framework */; settings = {ASSET_TAGS = (); }; };
 		163360361BBCDB79003A6B5D /* AproposTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163360351BBCDB79003A6B5D /* AproposTests.swift */; };
+		163360411BBCDBFB003A6B5D /* Apropos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163360401BBCDBFB003A6B5D /* Apropos.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		163360301BBCDB79003A6B5D /* AproposTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AproposTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		163360351BBCDB79003A6B5D /* AproposTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproposTests.swift; sourceTree = "<group>"; };
 		163360371BBCDB79003A6B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		163360401BBCDBFB003A6B5D /* Apropos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apropos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				163360291BBCDB79003A6B5D /* Apropos.h */,
+				163360401BBCDBFB003A6B5D /* Apropos.swift */,
 				1633602B1BBCDB79003A6B5D /* Info.plist */,
 			);
 			path = Apropos;
@@ -142,6 +145,7 @@
 		1633601D1BBCDB79003A6B5D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "jacob berkman";
 				TargetAttributes = {
@@ -193,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				163360411BBCDBFB003A6B5D /* Apropos.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +312,7 @@
 		1633603B1BBCDB79003A6B5D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -317,12 +323,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.87k.Apropos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		1633603C1BBCDB79003A6B5D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -375,6 +383,7 @@
 				1633603C1BBCDB79003A6B5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1633603D1BBCDB79003A6B5D /* Build configuration list for PBXNativeTarget "AproposTests" */ = {
 			isa = XCConfigurationList;
@@ -383,6 +392,7 @@
 				1633603F1BBCDB79003A6B5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

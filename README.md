@@ -57,3 +57,5 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 ```
 
 MIT licensed, cut-and-paste friendly.
+
+[Apropos.swift](https://github.com/jberkman/Apropos/blob/master/Apropos/Apropos.swift)

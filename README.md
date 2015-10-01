@@ -42,7 +42,7 @@ extension SeguableType {
 
 This lets you avoid hard-coding strings in your preperForSegue methods etc.:
 
-```
+```swift
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     guard let identifier = segue.identifier else { return }
     switch identifier {

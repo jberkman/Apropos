@@ -29,9 +29,9 @@ private let peelVerb = "peel"
 private let eatVerb = "eat"
 
 extension SegueableType {
-    static var pickSegueIdentifier: String { return pickVerb + segueNoun }
-    static var peelSegueIdentifier: String { return peelVerb + segueNoun }
-    static var eatSegueIdentifier: String { return eatVerb + segueNoun }
+    static var pickSegueIdentifier: String { return pickVerb + segueTypeNoun }
+    static var peelSegueIdentifier: String { return peelVerb + segueTypeNoun }
+    static var eatSegueIdentifier: String { return eatVerb + segueTypeNoun }
 }
 
 extension Segueable {

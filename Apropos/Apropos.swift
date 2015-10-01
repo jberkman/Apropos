@@ -38,11 +38,11 @@
     application as you see fit. Adopting the protocol is trivial:
 
     extension Apple: SegueableType, Segueable {
-        static let segueTypeNoun = "Apple"
+        class var segueTypeNoun: String { return "Apple" }
     }
 
     extension Banana: SegueableType, Segueable {
-        static let segueTypeNoun = "Banana"
+        class var segueTypeNoun: String { return "Banana" }
     }
 
     If your objects are fruits, you can create segue identifiers for the actions

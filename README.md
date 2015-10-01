@@ -52,6 +52,17 @@ func tableView(tableView: UITableView, didSelectCellAtIndexPath indexPath: NSInd
 }
 ```
 
+Because strings are Segueable too, you could also use your fetch request to
+determine which segue to use:
+
+```swift
+func tableView(tableView: UITableView, didSelectCellAtIndexPath indexPath: NSIndexPath) {
+    guard let entityName = fetchedResultsController.fetchRequest.entityName else { return }
+    let sender = tableView.cellForRowAtIndexPath(indexPath)
+    performSegueWithIdentifier(entityName.pickSegueIdentifier, sender: sender)
+}
+```
+
 You can also avoid hard-coding strings in your preperForSegue methods etc.:
 
 ```swift
@@ -65,16 +76,5 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     case Banana.pickSegueIdentifier:
         ...
     }
-}
-```
-
-Since strings are Segueable too, you could also use your fetch request to
-determine which segue to use:
-
-```swift
-func tableView(tableView: UITableView, didSelectCellAtIndexPath indexPath: NSIndexPath) {
-    guard let entityName = fetchedResultsController.fetchRequest.entityName else { return }
-    let sender = tableView.cellForRowAtIndexPath(indexPath)
-    performSegueWithIdentifier(entityName, sender: sender)
 }
 ```

@@ -26,24 +26,42 @@
 //  SOFTWARE.
 //
 
-import CoreData
-
 /*
 
-    Segueable provides a mechanism to build meaningful segue identifiers without
-    having to compare hard-coded strings everywhere.  An object's segueRoot is
-    a name describing its type, like a CoreData entity name. Your model classes
-    can implement this protocol, and you provide extensions to the Segueable
-    protocol for use in your application.
+    Segueable and SegueableType provide a mechanism to build meaningful segue
+    identifiers without having to compare or duplicate hard-coded strings
+    anywhere.
 
-    For example, if you have Apple and Banana classes, you might have segues
-    corresponding to actions such as pick, peel, or eat.  Your application's
-    extensions of Segueable would look like this:
+    An types's segueTypeNoun is a name describing its type, like a CoreData
+    entity name. Your model classes can implement this protocol, and you provide
+    extensions to the Segueable and SegueableType protocol for use in your
+    application as y ou see fit. Adopting the protocol is trivial:
+
+    extension Apple: SegueableType, Segueable {
+        static let segueTypeNoun = "Apple"
+    }
+
+    extension Banana: SegueableType, Segueable {
+        static let segueTypeNoun = "Banana"
+    }
+
+    If your objects are fruits, you can create segue identifiers for the actions
+    available in your UI:
+
+    private let pickVerb = "pick"
+    private let peelVerb = "peel"
+    private let eatVerb = "eat"
+
+    extension SegueableType {
+        static var pickSegueIdentifier: String { return pickVerb + segueNoun }
+        static var peelSegueIdentifier: String { return peelVerb + segueNoun }
+        static var eatSegueIdentifier: String { return eatVerb + segueNoun }
+    }
 
     extension Segueable {
-        var pickSegueIdentifier: String { return "pick" + segueNoun }
-        var peelSegueIdentifier: String { return "peel" + segueNoun }
-        var eatSegueIdentifier: String { return "eat" + segueNoun }
+        var pickSegueIdentifier: String { return pickVerb + segueNoun }
+        var peelSegueIdentifier: String { return peelVerb + segueNoun }
+        var eatSegueIdentifier: String { return eatVerb + segueNoun }
     }
 
     Given this, if you have a table view displaying different types of fruit to
@@ -55,15 +73,7 @@ import CoreData
         performSegueWithIdentifier(selectedObject.pickSegueIdentifier, sender: sender)
     }
 
-    A similar pattern can be used for types:
-
-    extension SeguableType {
-        static var pickSegueIdentifier: String { return "pick" + segueNoun }
-        static var peelSegueIdentifier: String { return "peel" + segueNoun }
-        static var eatSegueIdentifier: String { return "eat" + segueNoun }
-    }
-
-    This lets you avoid hard-coding strings in your preperForSegue methods etc.:
+    You can also avoid hard-coding strings in your preperForSegue methods etc.:
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let identifier = segue.identifier else { return }
@@ -77,20 +87,29 @@ import CoreData
         }
     }
 
+    Since strings are Segueable too, you could also use your fetch request to
+    determine which segue to use:
+
+    func tableView(tableView: UITableView, didSelectCellAtIndexPath indexPath: NSIndexPath) {
+        guard let entityName = fetchedResultsController.fetchRequest.entityName else { return }
+        let sender = tableView.cellForRowAtIndexPath(indexPath)
+        performSegueWithIdentifier(entityName, sender: sender)
+    }
+
  */
+
+public protocol SegueableType {
+    static var segueTypeNoun: String { get }
+}
+
+extension SegueableType {
+    var segueNoun: String { return self.dynamicType.segueTypeNoun }
+}
 
 public protocol Segueable {
     var segueNoun: String { get }
 }
 
-public protocol SegueableType {
-    static var segueNoun: String { get }
-}
-
 extension String: Segueable {
     public var segueNoun: String { return self }
-}
-
-extension NSManagedObject: Segueable {
-    public var segueNoun: String { return entity.name ?? "Object" }
 }

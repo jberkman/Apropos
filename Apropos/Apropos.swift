@@ -103,7 +103,7 @@ public protocol SegueableType {
 }
 
 extension SegueableType {
-    var segueNoun: String { return self.dynamicType.segueTypeNoun }
+    public var segueNoun: String { return self.dynamicType.segueTypeNoun }
 }
 
 public protocol Segueable {
